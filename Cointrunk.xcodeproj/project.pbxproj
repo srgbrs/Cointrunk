@@ -13,6 +13,12 @@
 		F4077C1E2BBE06B9003631A1 /* Cointrunk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4077C1C2BBE06B9003631A1 /* Cointrunk.xcdatamodeld */; };
 		F4077C202BBE06BA003631A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4077C1F2BBE06BA003631A1 /* Assets.xcassets */; };
 		F4077C232BBE06BA003631A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4077C212BBE06BA003631A1 /* LaunchScreen.storyboard */; };
+		F4077C2B2BBE0F61003631A1 /* BitcoinRateResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4077C2A2BBE0F61003631A1 /* BitcoinRateResponceModel.swift */; };
+		F4077C2D2BBE0F8D003631A1 /* BitoinRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4077C2C2BBE0F8D003631A1 /* BitoinRateService.swift */; };
+		F4077C2F2BBE13F4003631A1 /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4077C2E2BBE13F4003631A1 /* TransactionModel.swift */; };
+		F4077C312BBE1479003631A1 /* TransactionCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4077C302BBE1479003631A1 /* TransactionCategory.swift */; };
+		F4077C332BBE161E003631A1 /* WalletBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4077C322BBE161E003631A1 /* WalletBalance.swift */; };
+		F4077C352BBE162C003631A1 /* BitcoinRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4077C342BBE162C003631A1 /* BitcoinRate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		F4077C1F2BBE06BA003631A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4077C222BBE06BA003631A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4077C242BBE06BA003631A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4077C2A2BBE0F61003631A1 /* BitcoinRateResponceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinRateResponceModel.swift; sourceTree = "<group>"; };
+		F4077C2C2BBE0F8D003631A1 /* BitoinRateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitoinRateService.swift; sourceTree = "<group>"; };
+		F4077C2E2BBE13F4003631A1 /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
+		F4077C302BBE1479003631A1 /* TransactionCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCategory.swift; sourceTree = "<group>"; };
+		F4077C322BBE161E003631A1 /* WalletBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalance.swift; sourceTree = "<group>"; };
+		F4077C342BBE162C003631A1 /* BitcoinRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinRate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +71,26 @@
 				F4077C132BBE06B9003631A1 /* AppDelegate.swift */,
 				F4077C152BBE06B9003631A1 /* SceneDelegate.swift */,
 				F4077C172BBE06B9003631A1 /* ViewController.swift */,
+				F4077C362BBE16CA003631A1 /* Models */,
+				F4077C2C2BBE0F8D003631A1 /* BitoinRateService.swift */,
 				F4077C1F2BBE06BA003631A1 /* Assets.xcassets */,
 				F4077C212BBE06BA003631A1 /* LaunchScreen.storyboard */,
 				F4077C242BBE06BA003631A1 /* Info.plist */,
 				F4077C1C2BBE06B9003631A1 /* Cointrunk.xcdatamodeld */,
 			);
 			path = Cointrunk;
+			sourceTree = "<group>";
+		};
+		F4077C362BBE16CA003631A1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F4077C2A2BBE0F61003631A1 /* BitcoinRateResponceModel.swift */,
+				F4077C2E2BBE13F4003631A1 /* TransactionModel.swift */,
+				F4077C322BBE161E003631A1 /* WalletBalance.swift */,
+				F4077C342BBE162C003631A1 /* BitcoinRate.swift */,
+				F4077C302BBE1479003631A1 /* TransactionCategory.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +163,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4077C312BBE1479003631A1 /* TransactionCategory.swift in Sources */,
 				F4077C182BBE06B9003631A1 /* ViewController.swift in Sources */,
+				F4077C2B2BBE0F61003631A1 /* BitcoinRateResponceModel.swift in Sources */,
+				F4077C332BBE161E003631A1 /* WalletBalance.swift in Sources */,
+				F4077C2D2BBE0F8D003631A1 /* BitoinRateService.swift in Sources */,
 				F4077C142BBE06B9003631A1 /* AppDelegate.swift in Sources */,
+				F4077C2F2BBE13F4003631A1 /* TransactionModel.swift in Sources */,
 				F4077C162BBE06B9003631A1 /* SceneDelegate.swift in Sources */,
+				F4077C352BBE162C003631A1 /* BitcoinRate.swift in Sources */,
 				F4077C1E2BBE06B9003631A1 /* Cointrunk.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
