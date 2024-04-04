@@ -22,6 +22,11 @@
 		F43B6D462BBEE2010018A6AA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B6D452BBEE2010018A6AA /* MainView.swift */; };
 		F43B6D482BBEE2290018A6AA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B6D472BBEE2290018A6AA /* MainViewController.swift */; };
 		F43B6D4A2BBEE5380018A6AA /* UIColor+ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B6D492BBEE5380018A6AA /* UIColor+ColorPalette.swift */; };
+		F43B6D4C2BBEE8770018A6AA /* AddTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B6D4B2BBEE8770018A6AA /* AddTransactionViewModel.swift */; };
+		F43B6D4E2BBEE88F0018A6AA /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B6D4D2BBEE88F0018A6AA /* AddTransactionViewController.swift */; };
+		F43B6D502BBEE8E50018A6AA /* AddTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B6D4F2BBEE8E50018A6AA /* AddTransactionView.swift */; };
+		F43B6D522BBEE9AD0018A6AA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B6D512BBEE9AD0018A6AA /* Coordinator.swift */; };
+		F43B6D542BBEE9BD0018A6AA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B6D532BBEE9BD0018A6AA /* AppCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +47,11 @@
 		F43B6D452BBEE2010018A6AA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F43B6D472BBEE2290018A6AA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F43B6D492BBEE5380018A6AA /* UIColor+ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ColorPalette.swift"; sourceTree = "<group>"; };
+		F43B6D4B2BBEE8770018A6AA /* AddTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewModel.swift; sourceTree = "<group>"; };
+		F43B6D4D2BBEE88F0018A6AA /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
+		F43B6D4F2BBEE8E50018A6AA /* AddTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionView.swift; sourceTree = "<group>"; };
+		F43B6D512BBEE9AD0018A6AA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		F43B6D532BBEE9BD0018A6AA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,10 +86,15 @@
 			children = (
 				F4077C132BBE06B9003631A1 /* AppDelegate.swift */,
 				F4077C152BBE06B9003631A1 /* SceneDelegate.swift */,
+				F43B6D512BBEE9AD0018A6AA /* Coordinator.swift */,
+				F43B6D532BBEE9BD0018A6AA /* AppCoordinator.swift */,
 				F4077C172BBE06B9003631A1 /* ViewController.swift */,
 				F43B6D472BBEE2290018A6AA /* MainViewController.swift */,
 				F43B6D452BBEE2010018A6AA /* MainView.swift */,
 				F43B6D492BBEE5380018A6AA /* UIColor+ColorPalette.swift */,
+				F43B6D4B2BBEE8770018A6AA /* AddTransactionViewModel.swift */,
+				F43B6D4D2BBEE88F0018A6AA /* AddTransactionViewController.swift */,
+				F43B6D4F2BBEE8E50018A6AA /* AddTransactionView.swift */,
 				F4077C362BBE16CA003631A1 /* Models */,
 				F4077C2C2BBE0F8D003631A1 /* BitoinRateService.swift */,
 				F4077C1F2BBE06BA003631A1 /* Assets.xcassets */,
@@ -178,11 +193,16 @@
 				F43B6D482BBEE2290018A6AA /* MainViewController.swift in Sources */,
 				F4077C332BBE161E003631A1 /* WalletBalance.swift in Sources */,
 				F4077C2D2BBE0F8D003631A1 /* BitoinRateService.swift in Sources */,
+				F43B6D542BBEE9BD0018A6AA /* AppCoordinator.swift in Sources */,
 				F4077C142BBE06B9003631A1 /* AppDelegate.swift in Sources */,
 				F4077C2F2BBE13F4003631A1 /* TransactionModel.swift in Sources */,
 				F43B6D4A2BBEE5380018A6AA /* UIColor+ColorPalette.swift in Sources */,
+				F43B6D4C2BBEE8770018A6AA /* AddTransactionViewModel.swift in Sources */,
+				F43B6D522BBEE9AD0018A6AA /* Coordinator.swift in Sources */,
 				F43B6D462BBEE2010018A6AA /* MainView.swift in Sources */,
 				F4077C162BBE06B9003631A1 /* SceneDelegate.swift in Sources */,
+				F43B6D4E2BBEE88F0018A6AA /* AddTransactionViewController.swift in Sources */,
+				F43B6D502BBEE8E50018A6AA /* AddTransactionView.swift in Sources */,
 				F4077C352BBE162C003631A1 /* BitcoinRate.swift in Sources */,
 				F4077C1E2BBE06B9003631A1 /* Cointrunk.xcdatamodeld in Sources */,
 			);

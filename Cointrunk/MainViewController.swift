@@ -2,6 +2,8 @@
 import UIKit
 
 final class MainViewController: UIViewController {
+    weak var coordinator: AppCoordinator?
+    
     private var mainView: MainView! {
         return view as? MainView
     }
@@ -17,6 +19,11 @@ final class MainViewController: UIViewController {
     }
     
     private func setupBindings() {
-   
+        mainView.configureAddTransactionButton(target: self, action: #selector(addTransactionButtonTapped))
+
+    }
+
+    @objc private func addTransactionButtonTapped() {
+        coordinator?.showAddTransactionScreen()
     }
 }

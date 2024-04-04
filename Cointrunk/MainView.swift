@@ -20,6 +20,10 @@ final class MainView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configureAddTransactionButton(target: Any, action: Selector) {
+        addTransactionButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
     private func setupViews() {
         backgroundColor = .localGrey
         
