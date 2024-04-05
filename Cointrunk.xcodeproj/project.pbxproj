@@ -27,6 +27,10 @@
 		F43B6D502BBEE8E50018A6AA /* AddTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B6D4F2BBEE8E50018A6AA /* AddTransactionView.swift */; };
 		F43B6D522BBEE9AD0018A6AA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B6D512BBEE9AD0018A6AA /* Coordinator.swift */; };
 		F43B6D542BBEE9BD0018A6AA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B6D532BBEE9BD0018A6AA /* AppCoordinator.swift */; };
+		F43B6D562BBEF1600018A6AA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B6D552BBEF1600018A6AA /* MainViewModel.swift */; };
+		F43B6D582BBEF39E0018A6AA /* BitcoinRateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B6D572BBEF39E0018A6AA /* BitcoinRateManager.swift */; };
+		F4D3FF912BBF6CDA0049F938 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3FF902BBF6CDA0049F938 /* TransactionTableViewCell.swift */; };
+		F4D3FF932BBF77A70049F938 /* WalletBalanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3FF922BBF77A70049F938 /* WalletBalanceService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +56,10 @@
 		F43B6D4F2BBEE8E50018A6AA /* AddTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionView.swift; sourceTree = "<group>"; };
 		F43B6D512BBEE9AD0018A6AA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		F43B6D532BBEE9BD0018A6AA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		F43B6D552BBEF1600018A6AA /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		F43B6D572BBEF39E0018A6AA /* BitcoinRateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinRateManager.swift; sourceTree = "<group>"; };
+		F4D3FF902BBF6CDA0049F938 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
+		F4D3FF922BBF77A70049F938 /* WalletBalanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalanceService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +99,11 @@
 				F4077C172BBE06B9003631A1 /* ViewController.swift */,
 				F43B6D472BBEE2290018A6AA /* MainViewController.swift */,
 				F43B6D452BBEE2010018A6AA /* MainView.swift */,
+				F43B6D552BBEF1600018A6AA /* MainViewModel.swift */,
+				F4D3FF902BBF6CDA0049F938 /* TransactionTableViewCell.swift */,
+				F43B6D572BBEF39E0018A6AA /* BitcoinRateManager.swift */,
 				F43B6D492BBEE5380018A6AA /* UIColor+ColorPalette.swift */,
+				F4D3FF922BBF77A70049F938 /* WalletBalanceService.swift */,
 				F43B6D4B2BBEE8770018A6AA /* AddTransactionViewModel.swift */,
 				F43B6D4D2BBEE88F0018A6AA /* AddTransactionViewController.swift */,
 				F43B6D4F2BBEE8E50018A6AA /* AddTransactionView.swift */,
@@ -188,9 +200,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4077C312BBE1479003631A1 /* TransactionCategory.swift in Sources */,
+				F4D3FF912BBF6CDA0049F938 /* TransactionTableViewCell.swift in Sources */,
 				F4077C182BBE06B9003631A1 /* ViewController.swift in Sources */,
 				F4077C2B2BBE0F61003631A1 /* BitcoinRateResponceModel.swift in Sources */,
 				F43B6D482BBEE2290018A6AA /* MainViewController.swift in Sources */,
+				F4D3FF932BBF77A70049F938 /* WalletBalanceService.swift in Sources */,
 				F4077C332BBE161E003631A1 /* WalletBalance.swift in Sources */,
 				F4077C2D2BBE0F8D003631A1 /* BitoinRateService.swift in Sources */,
 				F43B6D542BBEE9BD0018A6AA /* AppCoordinator.swift in Sources */,
@@ -200,6 +214,8 @@
 				F43B6D4C2BBEE8770018A6AA /* AddTransactionViewModel.swift in Sources */,
 				F43B6D522BBEE9AD0018A6AA /* Coordinator.swift in Sources */,
 				F43B6D462BBEE2010018A6AA /* MainView.swift in Sources */,
+				F43B6D562BBEF1600018A6AA /* MainViewModel.swift in Sources */,
+				F43B6D582BBEF39E0018A6AA /* BitcoinRateManager.swift in Sources */,
 				F4077C162BBE06B9003631A1 /* SceneDelegate.swift in Sources */,
 				F43B6D4E2BBEE88F0018A6AA /* AddTransactionViewController.swift in Sources */,
 				F43B6D502BBEE8E50018A6AA /* AddTransactionView.swift in Sources */,

@@ -16,6 +16,7 @@ class AppCoordinator: Coordinator {
     func showAddTransactionScreen() {
         let addTransactionVC = AddTransactionViewController()
         addTransactionVC.coordinator = self
+        
         navigationController.pushViewController(addTransactionVC, animated: true)
     }
 

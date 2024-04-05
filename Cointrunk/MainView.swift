@@ -4,7 +4,7 @@ final class MainView: UIView {
     private let balanceLabel = UILabel()
     private let refreshBalanceButton = UIButton(type: .system)
     private let addTransactionButton = UIButton(type: .system)
-    private let transactionsTableView = UITableView()
+    let transactionsTableView = UITableView()
     private let bitcoinRateLabel = UILabel()
     
     private let upperView = UIView()
@@ -23,6 +23,17 @@ final class MainView: UIView {
     func configureAddTransactionButton(target: Any, action: Selector) {
         addTransactionButton.addTarget(target, action: action, for: .touchUpInside)
     }
+    
+    func updateBalanceLabel(with balance: NSDecimalNumber) {
+        DispatchQueue.main.async {
+            self.balanceLabel.text = "Баланс: \(balance) BTC"
+        }
+    }
+    
+    func configureRefreshBalanceButton(target: Any, action: Selector) {
+        refreshBalanceButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+
     
     private func setupViews() {
         backgroundColor = .localGrey
@@ -59,7 +70,7 @@ final class MainView: UIView {
         bitcoinRateLabel.translatesAutoresizingMaskIntoConstraints = false
         upperView.addSubview(bitcoinRateLabel)
         
-        transactionsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "transactionCell")
+        transactionsTableView.register(TransactionTableViewCell.self, forCellReuseIdentifier: TransactionTableViewCell.identifier)
         transactionsTableView.translatesAutoresizingMaskIntoConstraints = false
         tableViewContainer.addSubview(transactionsTableView)
         transactionsTableView.backgroundColor = .clear
@@ -104,5 +115,16 @@ final class MainView: UIView {
         bitcoinRateLabel.translatesAutoresizingMaskIntoConstraints = false
         transactionsTableView.translatesAutoresizingMaskIntoConstraints = false
     }
+    
+    func updateBitcoinRateLabel(with rate: Decimal) {
+        let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            formatter.maximumFractionDigits = 2
+            formatter.minimumFractionDigits = 2
+            formatter.roundingMode = .halfUp
+            
+            let rateString = formatter.string(from: rate as NSDecimalNumber) ?? "--"
+            bitcoinRateLabel.text = "Bitcoin Rate: \(rateString) USD"
+       }
 
 }
