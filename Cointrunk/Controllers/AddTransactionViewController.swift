@@ -2,6 +2,7 @@ import UIKit
 
 
 final class AddTransactionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    
     weak var coordinator: AppCoordinator?
     var onTransactionAdded: (() -> Void)?
     
@@ -16,6 +17,7 @@ final class AddTransactionViewController: UIViewController, UIPickerViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupBindings()
         addTransactionView.amountTextField.addTarget(self, action: #selector(amountTextFieldChanged(_:)), for: .editingChanged)
 
@@ -26,13 +28,15 @@ final class AddTransactionViewController: UIViewController, UIPickerViewDataSour
     
     
     @objc private func amountTextFieldChanged(_ textField: UITextField) {
+        
         guard let viewModel = viewModel else {
             return
         }
         let validationResult = viewModel.validateAmount(textField.text)
         switch validationResult {
         case .success(let amount):
-            print("Введенная сумма: \(amount)") // Продолжите обработку корректного значения
+            print("Введенная сумма: \(amount)")
+            
         case .failure(let errorMessage):
             showAlert(with: errorMessage)
         }
@@ -98,4 +102,5 @@ final class AddTransactionViewController: UIViewController, UIPickerViewDataSour
         }
         return viewModel.categories[row].toString()
     }
+    
 }

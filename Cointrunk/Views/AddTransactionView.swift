@@ -1,6 +1,7 @@
 import UIKit
 
-class AddTransactionView: UIView {
+final class AddTransactionView: UIView {
+    
     let amountTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect

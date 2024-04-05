@@ -1,6 +1,7 @@
 import UIKit
 
-class TransactionTableViewCell: UITableViewCell {
+final class TransactionTableViewCell: UITableViewCell {
+    
     static let identifier = "TransactionTableViewCell"
     
     private let timeLabel: UILabel = {
@@ -62,8 +63,21 @@ class TransactionTableViewCell: UITableViewCell {
         formatter.dateStyle = .medium
         formatter.timeStyle = .short
         
-        timeLabel.text = formatter.string(from: model.transactionDate)
-        amountLabel.text = "\(model.amount)"
+        timeLabel.text = formatter.string(from: model.transactionDate as Date)
+        amountLabel.text = model.amount.stringValue + " BTC" //
+        
+
         categoryLabel.text = model.category
+
+
+        if model.type == "доход" {
+            amountLabel.textColor = .systemGreen
+        } else if model.type == "расход" {
+            amountLabel.textColor = .systemRed
+        } else {
+            amountLabel.textColor = .black
+        }
     }
+
+    
 }

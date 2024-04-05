@@ -1,7 +1,8 @@
 import Foundation
 import CoreData
 
-class BitcoinRateManager {
+final class BitcoinRateManager {
+    
     private let bitcoinRateService: BitcoinRateService
     private let context: NSManagedObjectContext
     

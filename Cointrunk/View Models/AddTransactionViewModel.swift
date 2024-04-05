@@ -11,6 +11,7 @@ final class AddTransactionViewModel {
         case success(Decimal)
         case failure(String)
     }
+    
     init(balanceService: WalletBalanceService) {
           self.balanceService = balanceService
       }
@@ -29,34 +30,20 @@ final class AddTransactionViewModel {
     func addTransaction(amount: Decimal, category: TransactionCategory, completion: @escaping (Bool, String?) -> Void) {
         balanceService.canPerformTransaction(amount: amount) { [weak self] canPerform in
             guard canPerform else {
-                completion(false, nil)
+                completion(false, "Недостаточно средств для выполнения транзакции")
                 return
             }
             
-            let context = self?.balanceService.publicContext ?? (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             
-            let transaction = Transaction(context: context)
-            transaction.amount = NSDecimalNumber(decimal: amount)
-            transaction.category = category.rawValue
-            transaction.transactionDate = Date()
-            
-            self?.balanceService.updateBalance(with: amount, isAdding: false) { success in
+            self?.balanceService.updateBalance(with: amount, isAdding: false, category: category.rawValue) { success in
                 guard success else {
-                    completion(false, nil)
-                    
+                    completion(false, "Ошибка при обновлении баланса")
                     return
                 }
-                do {
-                    try context.save()
-                    completion(true, nil)
-                    self?.onTransactionAdded?()
-                } catch {
-                    print("Ошибка сохранения транзакции: \(error)")
-                    completion(false, nil)
-                }
+                completion(true, nil)
+                self?.onTransactionAdded?()
             }
         }
     }
-
 
 }

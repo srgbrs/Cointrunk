@@ -1,6 +1,7 @@
 import UIKit
 
 final class MainView: UIView {
+    
     private let balanceLabel = UILabel()
     private let refreshBalanceButton = UIButton(type: .system)
     private let addTransactionButton = UIButton(type: .system)

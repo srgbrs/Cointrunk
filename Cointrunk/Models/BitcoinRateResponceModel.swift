@@ -15,6 +15,14 @@ struct BitcoinRateResponse: Codable {
         let symbol: String
         let rate: String
         let description: String
-        let rate_float: Float
+        let rateFloat: Float
+
+        enum CodingKeys: String, CodingKey {
+            case code
+            case symbol
+            case rate
+            case description
+            case rateFloat = "rate_float"
+        }
     }
 }

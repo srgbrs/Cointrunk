@@ -21,16 +21,18 @@ final class MainViewController: UIViewController {
         
         viewModel = MainViewModel(balanceService: walletBalanceService)
         setupBindings()
+        
         viewModel.fetchLatestBitcoinRate()
         viewModel.loadTransactions()
+        viewModel.fetchAndUpdateBalanceDisplay()
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        viewModel.onBalanceUpdated = { [weak self] newBalance in
-            self?.mainView.updateBalanceLabel(with: newBalance)
-        }
-        
-        viewModel.onTransactionsUpdated = { [weak self] in
-            self?.mainView.transactionsTableView.reloadData()
-        }
+        viewModel.loadTransactions()
+        viewModel.fetchAndUpdateBalanceDisplay()
     }
     
     @objc func showBalanceUpdateAlert() {
@@ -45,7 +47,7 @@ final class MainViewController: UIViewController {
             guard let textField = alert?.textFields?.first, let text = textField.text, let amount = Decimal(string: text) else {
                 return
             }
-            self.updateBalance(amount: amount)
+            self.viewModel.updateBalance(amount: amount)
             
         }
         
@@ -57,34 +59,8 @@ final class MainViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    func updateBalance(amount: Decimal) {
-        viewModel.balanceService.updateBalance(with: amount, isAdding: true) { [weak self] success in
-            DispatchQueue.main.async {
-                if success {
-                   
-                    print("Баланс успешно пополнен на \(amount)")
-              
-                     self?.fetchAndUpdateBalanceDisplay()
-                } else {
-               
-                }
-            }
-        }
-    }
-    
-    func fetchAndUpdateBalanceDisplay() {
-        viewModel.balanceService.fetchCurrentBalance { [weak self] balance in
-            DispatchQueue.main.async {
-                if let balance = balance {
-    
-                    self?.mainView.updateBalanceLabel(with: balance)
-                }
-            }
-        }
-    }
-
-    
     private func setupBindings() {
+        
         mainView.configureAddTransactionButton(target: self, action: #selector(addTransactionButtonTapped))
             mainView.configureRefreshBalanceButton(target: self, action: #selector(showBalanceUpdateAlert))
 
@@ -102,6 +78,18 @@ final class MainViewController: UIViewController {
                  self?.mainView.transactionsTableView.reloadData()
              }
          }
+        
+        viewModel.onBalanceUpdated = { [weak self] newBalance in
+                DispatchQueue.main.async {
+                    self?.mainView.updateBalanceLabel(with: newBalance)
+                }
+            }
+
+          viewModel.onTransactionsUpdated = { [weak self] in
+              DispatchQueue.main.async {
+                  self?.mainView.transactionsTableView.reloadData()
+              }
+          }
     }
 
     @objc private func addTransactionButtonTapped() {
