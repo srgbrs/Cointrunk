@@ -1,7 +1,7 @@
-
 import UIKit
 
-final class MainViewController: UIViewController {
+final class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    // MARK: - Properties
     weak var coordinator: AppCoordinator?
     private var viewModel: MainViewModel!
     
@@ -9,6 +9,7 @@ final class MainViewController: UIViewController {
         return view as? MainView
     }
 
+    // MARK: - Lifecycle
     override func loadView() {
         let mainView = MainView()
         view = mainView
@@ -25,7 +26,6 @@ final class MainViewController: UIViewController {
         viewModel.fetchLatestBitcoinRate()
         viewModel.loadTransactions()
         viewModel.fetchAndUpdateBalanceDisplay()
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,7 +35,41 @@ final class MainViewController: UIViewController {
         viewModel.fetchAndUpdateBalanceDisplay()
     }
     
-    @objc func showBalanceUpdateAlert() {
+    // MARK: - Setup
+    private func setupBindings() {
+        mainView.configureAddTransactionButton(target: self, action: #selector(addTransactionButtonTapped))
+        mainView.configureRefreshBalanceButton(target: self, action: #selector(showBalanceUpdateAlert))
+        
+        viewModel.onRateUpdate = { [weak self] rate in
+            DispatchQueue.main.async {
+                self?.mainView.updateBitcoinRateLabel(with: rate)
+            }
+        }
+
+        mainView.transactionsTableView.dataSource = self
+        mainView.transactionsTableView.delegate = self
+        
+        viewModel.onDataLoaded = { [weak self] in
+            DispatchQueue.main.async {
+                self?.mainView.transactionsTableView.reloadData()
+            }
+        }
+        
+        viewModel.onBalanceUpdated = { [weak self] newBalance in
+            DispatchQueue.main.async {
+                self?.mainView.updateBalanceLabel(with: newBalance)
+            }
+        }
+
+        viewModel.onTransactionsUpdated = { [weak self] in
+            DispatchQueue.main.async {
+                self?.mainView.transactionsTableView.reloadData()
+            }
+        }
+    }
+    
+    // MARK: - Actions
+    @objc private func showBalanceUpdateAlert() {
         let alert = UIAlertController(title: "Пополнение баланса", message: "Введите количество bitcoins", preferredStyle: .alert)
         
         alert.addTextField { textField in
@@ -48,7 +82,6 @@ final class MainViewController: UIViewController {
                 return
             }
             self.viewModel.updateBalance(amount: amount)
-            
         }
         
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
@@ -59,53 +92,17 @@ final class MainViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    private func setupBindings() {
-        
-        mainView.configureAddTransactionButton(target: self, action: #selector(addTransactionButtonTapped))
-            mainView.configureRefreshBalanceButton(target: self, action: #selector(showBalanceUpdateAlert))
-
-        
-        viewModel.onRateUpdate = { [weak self] rateText in
-                   self?.mainView.updateBitcoinRateLabel(with: rateText)
-        }
-
-        mainView.transactionsTableView.dataSource = self
-        mainView.transactionsTableView.delegate = self
-
-        
-        viewModel.onDataLoaded = { [weak self] in
-             DispatchQueue.main.async {
-                 self?.mainView.transactionsTableView.reloadData()
-             }
-         }
-        
-        viewModel.onBalanceUpdated = { [weak self] newBalance in
-                DispatchQueue.main.async {
-                    self?.mainView.updateBalanceLabel(with: newBalance)
-                }
-            }
-
-          viewModel.onTransactionsUpdated = { [weak self] in
-              DispatchQueue.main.async {
-                  self?.mainView.transactionsTableView.reloadData()
-              }
-          }
-    }
-
     @objc private func addTransactionButtonTapped() {
         coordinator?.showAddTransactionScreen()
     }
-}
 
-extension MainViewController: UITableViewDataSource, UITableViewDelegate {
+    // MARK: - UITableViewDataSource & UITableViewDelegate
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSections
-
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRowsInSection(section)
-
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -116,5 +113,4 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(with: transaction)
         return cell
     }
-
 }
